@@ -303,4 +303,38 @@ public class Complex {
         return this;
     }
 
+    /*------------------------------------------------------------------------------------------------------------------
+    CONJUGATE
+    */
+
+    public Complex conj() {
+        return new Complex(real, -im)
+    }
+
+    /*------------------------------------------------------------------------------------------------------------------
+    MODIFY MODULUS
+    */
+
+    public Complex setMod(double d){
+        double diffmod = d/getMod();
+        return prodto(diffmod);
+    }
+
+    /*------------------------------------------------------------------------------------------------------------------
+    MODIFY PHASE
+    */
+
+    public Complex addPhase(double phi){
+        return prod(new Complex(Math.cos(phi), Math.sin(phi)));
+    }
+
+    public Complex addPhaseTo(double phi){
+        return prodto(new Complex(Math.cos(phi), Math.sin(phi)));
+    }
+
+    public Complex setPhase(double phi){
+        double diffphase = phi-getPhase();
+        return addPhaseTo(diffphase);
+    }
+
 }
