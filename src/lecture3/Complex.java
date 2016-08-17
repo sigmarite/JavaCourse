@@ -308,7 +308,7 @@ public class Complex {
     */
 
     public Complex conj() {
-        return new Complex(real, -im)
+        return new Complex(real, -im);
     }
 
     /*------------------------------------------------------------------------------------------------------------------
