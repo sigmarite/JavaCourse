@@ -9,6 +9,10 @@ public class Leaf extends Node {
         super(label, new EmptyTree(), new EmptyTree());
     }
 
+    public String toString(){
+        return "[" + getLabel() + "]";
+    }
+
     public int length() {return 1;}
     public int numOfNodes() {return 1;}
 }

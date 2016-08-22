@@ -11,6 +11,10 @@ public class Node extends BTree{
         this.label = label; this.right = right; this.left = left;
     }
 
+    public String toString(){
+        return "[" + label + "," + right + "," + left + "]";
+    }
+
     public boolean isEmpty() {return false;}
     public  String getLabel(){return label;}
     public  BTree getRight(){return right;}

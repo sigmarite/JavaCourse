@@ -10,6 +10,7 @@ public abstract class BTree {
     public abstract BTree getLeft();
     public abstract int length();
     public abstract int numOfNodes();
+    public abstract String toString();
 
     public static BTree generateBTreeFromSequence(int n, int m){
         if (n > m) {return new EmptyTree();}
