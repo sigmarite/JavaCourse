@@ -18,4 +18,7 @@ public class Node extends BTree{
     public int length(){
         return Math.max(right.length(), left.length()) + 1;
     }
+    public int numOfNodes() {
+        return right.numOfNodes() + left.numOfNodes() + 1;
+    }
 }

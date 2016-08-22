@@ -9,4 +9,5 @@ public abstract class BTree {
     public abstract BTree getRight();
     public abstract BTree getLeft();
     public abstract int length();
+    public abstract int numOfNodes();
 }

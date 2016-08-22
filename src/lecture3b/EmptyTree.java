@@ -9,4 +9,5 @@ public class EmptyTree extends BTree {
     public BTree getRight() {System.out.println("ERROR!"); return this;}
     public BTree getLeft() {System.out.println("ERROR!"); return this;}
     public int length() {return 0;}
+    public int numOfNodes() {return 0;}
 }
