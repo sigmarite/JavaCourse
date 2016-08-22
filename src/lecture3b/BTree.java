@@ -16,8 +16,8 @@ public abstract class BTree {
         if (n > m) {return new EmptyTree();}
         else if (n == m) {return new Leaf("" + n);}
         else {
-            int i = (n + m)/2 ;
-            return new Node("" + n, generateBTreeFromSequence(n, i), generateBTreeFromSequence(i, m) );
+            int i = (n + 1 + m)/2 ;
+            return new Node("" + n, generateBTreeFromSequence(n+1, i), generateBTreeFromSequence(i+1, m) );
         }
     }
 }
