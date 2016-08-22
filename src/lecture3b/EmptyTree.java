@@ -8,4 +8,5 @@ public class EmptyTree extends BTree {
     public String getLabel() { System.out.println("ERROR!"); return "ERROR!";}
     public BTree getRight() {System.out.println("ERROR!"); return this;}
     public BTree getLeft() {System.out.println("ERROR!"); return this;}
+    public int length() {return 0;}
 }

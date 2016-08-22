@@ -8,4 +8,5 @@ public abstract class BTree {
     public abstract String getLabel();
     public abstract BTree getRight();
     public abstract BTree getLeft();
+    public abstract int length();
 }
