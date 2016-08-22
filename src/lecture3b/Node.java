@@ -13,8 +13,8 @@ public class Node extends BTree{
 
     public boolean isEmpty() {return false;}
     public  String getLabel(){return label;}
-    public  BTree getRight(){return right;};
-    public  BTree getLeft(){return left;};
+    public  BTree getRight(){return right;}
+    public  BTree getLeft(){return left;}
     public int length(){
         return Math.max(right.length(), left.length()) + 1;
     }

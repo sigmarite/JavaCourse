@@ -10,4 +10,13 @@ public abstract class BTree {
     public abstract BTree getLeft();
     public abstract int length();
     public abstract int numOfNodes();
+
+    public static BTree generateBTreeFromSequence(int n, int m){
+        if (n > m) {return new EmptyTree();}
+        else if (n == m) {return new Leaf("" + n);}
+        else {
+            int i = (n + m)/2 ;
+            return new Node("" + n, generateBTreeFromSequence(n, i), generateBTreeFromSequence(i, m) );
+        }
+    }
 }
