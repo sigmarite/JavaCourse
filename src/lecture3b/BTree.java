@@ -5,9 +5,9 @@ package lecture3b;
  */
 public abstract class BTree {
     public abstract boolean isEmpty();
-    public abstract String getLabel();
-    public abstract BTree getRight();
-    public abstract BTree getLeft();
+    public abstract String getLabel() throws EmptyTreeException;
+    public abstract BTree getRight() throws EmptyTreeException;
+    public abstract BTree getLeft() throws EmptyTreeException;
     public abstract int length();
     public abstract int numOfNodes();
     public abstract String toString();

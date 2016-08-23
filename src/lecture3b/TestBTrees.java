@@ -10,9 +10,24 @@ public class TestBTrees {
         EmptyTree myempty = new EmptyTree();
         System.out.println(myempty);
         System.out.println("isEmpty   ->\t" + myempty.isEmpty());
-        System.out.println("getLabel  ->\t" + myempty.getLabel());
-        System.out.println("getLeft   ->\t" + myempty.getLeft());
-        System.out.println("getRight  ->\t" + myempty.getRight());
+        try {
+            System.out.println("getLabel  ->\t" + myempty.getLabel());
+        }
+        catch (EmptyTreeException excp) {
+            System.out.println("CORRECT getLabel EXCEPTION");
+        }
+        try {
+            System.out.println("getLeft  ->\t" + myempty.getLeft());
+        }
+        catch (EmptyTreeException excp) {
+            System.out.println("CORRECT getLeft EXCEPTION");
+        }
+        try {
+            System.out.println("getRight  ->\t" + myempty.getRight());
+        }
+        catch (EmptyTreeException excp) {
+            System.out.println("CORRECT getRight EXCEPTION");
+        }
         System.out.println("length    ->\t" + myempty.length());
         System.out.println("nodes     ->\t" + myempty.numOfNodes());
         System.out.println("");
@@ -34,9 +49,11 @@ public class TestBTrees {
         System.out.println("isEmpty   ->\t" + mynode.isEmpty());
         System.out.println("getLabel  ->\t" + mynode.getLabel());
         System.out.println("getLeft   ->\t" + mynode.getLeft());
-        System.out.println("Left lab  ->\t" + mynode.getLeft().getLabel());
+        try {System.out.println("Left lab  ->\t" + mynode.getLeft().getLabel());}
+        catch (EmptyTreeException excp) {System.out.println("Left lab  ->\tEMPTY");}
         System.out.println("getRight  ->\t" + mynode.getRight());
-        System.out.println("Right lab ->\t" + mynode.getRight().getLabel());
+        try {System.out.println("Right lab ->\t" + mynode.getRight().getLabel());}
+        catch (EmptyTreeException excp) {System.out.println("Right lab  ->\tEMPTY");}
         System.out.println("length    ->\t" + mynode.length());
         System.out.println("nodes     ->\t" + mynode.numOfNodes());
         System.out.println("");
