@@ -6,9 +6,9 @@ package lecture3b;
 public class EmptyTree extends BTree {
     public String toString(){return "[*]";}
     public boolean isEmpty() { return true;}
-    public String getLabel() { System.out.println("ERROR!"); return "ERROR!";}
-    public BTree getRight() {System.out.println("ERROR!"); return this;}
-    public BTree getLeft() {System.out.println("ERROR!"); return this;}
+    public String getLabel() throws EmptyTreeException { throw new EmptyTreeException();}
+    public BTree getRight() throws EmptyTreeException { throw new EmptyTreeException();}
+    public BTree getLeft() throws EmptyTreeException { throw new EmptyTreeException();}
     public int length() {return 0;}
     public int numOfNodes() {return 0;}
 }
