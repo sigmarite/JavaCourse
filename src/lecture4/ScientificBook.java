@@ -22,6 +22,10 @@ public class ScientificBook extends Book {
                 proceedings == other.proceedings;
     }
 
+    public boolean superEquals(Book other) {
+        return super.equals(other);
+    }
+
     public String getArea() {
         return area;
     }
