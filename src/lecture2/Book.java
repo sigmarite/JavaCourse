@@ -20,6 +20,10 @@ public class Book {
         this.ISBN = ISBN;
     }
 
+    public Book(Book other) {
+        this(other.title, other.author, other.numOfPages, other.topics, other.ISBN);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
