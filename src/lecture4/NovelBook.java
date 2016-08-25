@@ -3,6 +3,7 @@ package lecture4;
 import lecture2.Book;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by mpividori on 25/08/16.
@@ -10,14 +11,14 @@ import java.util.Arrays;
 
 public class NovelBook extends Book {
 
-    private String[] topics;
+    private List<String> topics;
 
-    public NovelBook(String title, String author, int numOfPages, String ISBN, String[] topics) {
+    public NovelBook(String title, String author, int numOfPages, String ISBN, List<String> topics) {
         super(title, author, numOfPages, ISBN);
         this.topics = topics;
     }
 
-    public NovelBook(Book other, String[] topics) {
+    public NovelBook(Book other, List<String> topics) {
         super(other);
         this.topics = topics;
     }
@@ -32,14 +33,14 @@ public class NovelBook extends Book {
 
     public boolean equals(NovelBook other) {
         return super.equals(other) &&
-                Arrays.equals(topics, other.topics);
+                topics.equals(other.topics);
     }
 
-    public String[] getTopics() {
+    public List<String> getTopics() {
         return topics;
     }
 
-    public void setTopics(String[] topics) {
+    public void setTopics(List<String> topics) {
         this.topics = topics;
     }
 }
