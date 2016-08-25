@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 public class TestEqualsAfterInheritance {
     public static void main(String[] args) {
-        Book b1 = new Book("Titolo", "Autore", 101, null, "A123");
+        Book b1 = new Book("Titolo", "Autore", 101, "A123");
         ScientificBook sb1 = new ScientificBook("Titolo", "Autore", 101, null, "A123", "JAVA");
 
         System.out.println("sb1.equals(b1) ->\t" + sb1.equals(b1));                 //EXPECTED true  (usa l'equals di Book perché non c'è un metodo equals Book!)

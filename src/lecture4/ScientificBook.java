@@ -11,7 +11,7 @@ public class ScientificBook extends Book {
     private boolean proceedings = false;
 
     public ScientificBook(String title, String author, int numOfPages, String[] topics, String ISBN, String area) {
-        super(title, author, numOfPages, topics, ISBN);
+        super(title, author, numOfPages, ISBN);
         this.area = area;
     }
 
