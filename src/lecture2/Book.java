@@ -32,11 +32,31 @@ public class Book {
                 '}';
     }
 
-    public boolean equals(Book other) {
-        return title.equals(other.title) &&
-                author.equals(other.author) &&
-                numOfPages == other.numOfPages &&
-                ISBN.equals(other.ISBN);
+    public static boolean equals(Object o1, Object o2) {
+        if (o1 == o2) return true;
+        if (!(o1 instanceof Book) || !(o2 instanceof Book) ) return false;
+
+        Book b1 = (Book) o1; Book b2 = (Book) o2;
+
+        if (b1.getNumOfPages() != b2.getNumOfPages()) return false;
+        if (!b1.getTitle().equals(b2.getTitle())) return false;
+        if (!b1.getAuthor().equals(b2.getAuthor())) return false;
+        return b1.getISBN().equals(b2.getISBN());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        return Book.equals(this, o);
+    }
+
+    public boolean parentEquals(Book o){
+        Class c1 = this.getClass(); Class c2 = o.getClass();
+        if (c1.isAssignableFrom(c2)) return this.equals(this, o);
+        if (c2.isAssignableFrom(c1)) return o.equals(this, o);
+        return false;
     }
 
     public String getTitle() {

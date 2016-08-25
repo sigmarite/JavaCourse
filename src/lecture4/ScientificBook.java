@@ -20,6 +20,23 @@ public class ScientificBook extends Book {
         this.area = area;
     }
 
+    public static boolean equals(Object o1, Object o2) {
+        if (!Book.equals(o1, o2)) return false;
+        if (!(o1 instanceof ScientificBook) || !(o2 instanceof ScientificBook) ) return false;
+
+        ScientificBook sb1 = (ScientificBook) o1; ScientificBook sb2 = (ScientificBook) o2;
+        if (!sb1.getArea().equals(sb2.getArea())) return false;
+        return sb1.isProceedings() == sb2.isProceedings();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        return ScientificBook.equals(this, o);
+    }
+
     @Override
     public String toString() {
         return "Scientific" +
@@ -27,13 +44,6 @@ public class ScientificBook extends Book {
                 ", area='" + area + '\'' +
                 ", proceedings=" + proceedings + '\'' +
                 '}';
-    }
-
-    //    @Override                                                 !!SBAGLIATO
-    public boolean equals(ScientificBook other) {
-        return super.equals(other) &&
-                area.equals(other.area) &&
-                proceedings == other.proceedings;
     }
 
     public boolean superEquals(Book other) {

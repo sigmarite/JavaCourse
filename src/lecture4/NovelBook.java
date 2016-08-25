@@ -31,9 +31,20 @@ public class NovelBook extends Book {
                 '}';
     }
 
-    public boolean equals(NovelBook other) {
-        return super.equals(other) &&
-                topics.equals(other.topics);
+    public static boolean equals(Object o1, Object o2) {
+        if (!Book.equals(o1, o2)) return false;
+        if (!(o1 instanceof NovelBook) || !(o2 instanceof NovelBook) ) return false;
+
+        NovelBook nb1 = (NovelBook) o1; NovelBook nb2 = (NovelBook) o2;
+        return nb1.getTopics().equals(nb2.getTopics());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        return NovelBook.equals(this, o);
     }
 
     public List<String> getTopics() {

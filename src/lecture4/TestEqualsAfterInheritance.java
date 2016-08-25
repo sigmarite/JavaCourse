@@ -21,5 +21,7 @@ public class TestEqualsAfterInheritance {
         System.out.println("Book.equals(b1, sb1) ->\t" + Book.equals(b1, sb1));     //EXPECTED true
         System.out.println("ScientificBook.equals(b1, sb1) ->\t" + ScientificBook.equals(b1, sb1));     //EXPECTED false
 
+        System.out.println("sb1.parentEquals(b1) ->\t" + sb1.parentEquals(b1));
+
     }
 }
