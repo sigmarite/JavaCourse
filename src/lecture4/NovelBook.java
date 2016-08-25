@@ -22,6 +22,14 @@ public class NovelBook extends Book {
         this.topics = topics;
     }
 
+    @Override
+    public String toString() {
+        return "Novel" +
+                super.toString().substring(0, super.toString().length() - 1) +
+                ", topics='" + topics + '\'' +
+                '}';
+    }
+
     public boolean equals(NovelBook other) {
         return super.equals(other) &&
                 Arrays.equals(topics, other.topics);

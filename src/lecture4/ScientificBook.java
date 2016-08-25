@@ -15,7 +15,21 @@ public class ScientificBook extends Book {
         this.area = area;
     }
 
-//    @Override                                                 !!SBAGLIATO
+    public ScientificBook(Book book, String area) {
+        super(book);
+        this.area = area;
+    }
+
+    @Override
+    public String toString() {
+        return "Scientific" +
+                super.toString().substring(0, super.toString().length() - 1) +
+                ", area='" + area + '\'' +
+                ", proceedings=" + proceedings + '\'' +
+                '}';
+    }
+
+    //    @Override                                                 !!SBAGLIATO
     public boolean equals(ScientificBook other) {
         return super.equals(other) &&
                 area.equals(other.area) &&
