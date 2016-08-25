@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class NovelBook extends Book {
 
-    String[] topics;
+    private String[] topics;
 
     public NovelBook(String title, String author, int numOfPages, String ISBN, String[] topics) {
         super(title, author, numOfPages, ISBN);
