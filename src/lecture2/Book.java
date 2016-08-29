@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by mpividori on 11/08/16.
  */
-public class Book {
+public class Book implements Comparable<Book> {
     private String title;
     private String author;
     private int numOfPages;
@@ -59,6 +59,8 @@ public class Book {
         return false;
     }
 
+
+
     public String getTitle() {
         return title;
     }
@@ -99,5 +101,18 @@ public class Book {
                 initials = initials + currentChar + '.';
         }
         return initials;
+    }
+
+    @Override
+    public int compareTo(Book other) {
+        int result;
+        result = title.compareTo(other.title);
+        if (result==0) {
+            result = author.compareTo(other.author);
+            if (result==0) {
+                result = numOfPages - other.numOfPages;
+            }
+        }
+        return result;
     }
 }
