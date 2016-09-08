@@ -12,17 +12,16 @@ public class TestScheduler {
         List<Integer> outputList = new ArrayList<>();
         outputList.add(1);
         outputList.add(2);
-        outputList.add(5);
+        outputList.add(4);
 
 
         List<Integer> inputList = new ArrayList<>();
-        inputList.add(1);
         inputList.add(2);
-        inputList.add(5);
         inputList.add(10);
         inputList.add(20);
         inputList.add(50);
         inputList.add(100);
+        inputList.add(1000);
 
         List<Integer> valList = new ArrayList<>();
 //        valList.add(1);
