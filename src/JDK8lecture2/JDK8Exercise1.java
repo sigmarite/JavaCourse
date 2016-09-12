@@ -393,7 +393,32 @@ public class JDK8Exercise1 {
         ///////////////////////////////////////////////////////////////////////////////////////////////
         //ex12
         ///////////////////////////////////////////////////////////////////////////////////////////////
-
+        Function<ArrayList<Object>, Object> diag = inputList -> {
+            if (isUndefined.test(inputList)) return UNDEFINED;
+            if ((!(isBilevelList.test(inputList))) && !(inputList.isEmpty())) return UNDEFINED;
+            if (isIntegerList.test(inputList)) return inputList;
+            ArrayList<Object> list = new ArrayList<>();
+            for (int i = 0; i < (int)len.apply(inputList); i++) {
+                ArrayList<Object> subList = (ArrayList)inputList.get(i);
+                if (!(len.apply(subList).equals(len.apply(inputList)))) return UNDEFINED;
+                list.add(subList.get(i));
+            }
+            return list;
+        };
+        ArrayList<Object> ex12inp1 = new ArrayList<>(
+                Arrays.asList(new ArrayList<>(
+                        Arrays.asList(1, 2, 3)), new ArrayList<>(
+                        Arrays.asList(4, 5, 6)), new ArrayList<>(
+                        Arrays.asList(7, 8, 9))));
+        ArrayList<Object> ex12inp2 = new ArrayList<>(
+                Arrays.asList(new ArrayList<>(
+                        Arrays.asList(5, 6)), new ArrayList<>(
+                        Arrays.asList(8, 9))));
+        ArrayList<Object> ex12inp3 = new ArrayList<>();
+        System.out.println("\nExercise12: diag");
+        System.out.println("diag("+ex12inp1+") ->\t"+diag.apply(ex12inp1)+"\t (expected <1, 5, 9>)");
+        System.out.println("diag("+ex12inp2+") ->\t"+diag.apply(ex12inp2)+"\t (expected <5, 9>)");
+        System.out.println("diag("+ex12inp3+") ->\t"+diag.apply(ex12inp3)+"\t (expected <>)");
 
 
     }
