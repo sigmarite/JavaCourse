@@ -25,7 +25,7 @@ public class JDK8Exercise1 {
 
         Predicate<Object> isUndefined = x ->
                 x.equals(UNDEFINED) ||
-                x instanceof ArrayList && ((ArrayList)x).contains(UNDEFINED);
+                x instanceof ArrayList && ((ArrayList)x).contains(UNDEFINED);  //NOT GUARANTEED
 
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -348,6 +348,51 @@ public class JDK8Exercise1 {
         System.out.println("flatten("+ex10inp2+") ->\t"+flatten.apply(ex10inp2)+"\t (expected <1, 2, 4, 5, 6>)");
         System.out.println("flatten("+ex10inp3+") ->\t"+flatten.apply(ex10inp3)+"\t (expected <3, 4>)");
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        //ex11
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        Function<ArrayList<Object>, Object> oneLevelFlatten = inputList -> {
+            if (isUndefined.test(inputList)) return UNDEFINED;
+            if (isIntegerList.test(inputList)) return inputList;
+            ArrayList<Object> list = new ArrayList<>();
+            for (Object el : inputList){
+                if (el.equals(UNDEFINED)) return UNDEFINED;
+                if (el instanceof Integer) list.add(el);
+                else {
+                    for (Object innerEl : (ArrayList)el) list.add(innerEl);
+                }
+            }
+            return list;
+        };
+
+        Function<ArrayList<Object>, Object> allflatten = inputList -> {
+            if (isUndefined.test(inputList)) return UNDEFINED;
+            ArrayList<Object> list = new ArrayList<>(inputList);
+            while (!(isIntegerList.test(list))) {
+                Object temp = oneLevelFlatten.apply(list);
+                if (temp.equals(UNDEFINED)) return UNDEFINED;
+                list = (ArrayList)temp;
+            }
+            return list;
+        };
+        ArrayList<Object> ex11inp1 = new ArrayList<>(
+                Arrays.asList(new ArrayList<>(
+                        Arrays.asList(1, 2, 3)), 4, 5));
+        ArrayList<Object> ex11inp2 = new ArrayList<>(
+                Arrays.asList(new ArrayList<>(
+                        Arrays.asList(1, 2)), new ArrayList<>(), new ArrayList<>(
+                        Arrays.asList(6, new ArrayList<>(
+                                Collections.singletonList(7))))));
+        ArrayList<Object> ex11inp3 = new ArrayList<>(
+                Arrays.asList(new ArrayList<>( Arrays.asList(new ArrayList<>(), new ArrayList<>( Arrays.asList(new ArrayList<>())), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()))));
+        System.out.println("\nExercise11: allflatten() (and oneLevelFlatten");
+        System.out.println("oneLevelFlatten("+ex11inp1+") ->\t"+oneLevelFlatten.apply(ex11inp1)+"\t (expected <1, 2, 3, 4, 5>)");
+        System.out.println("allflatten("+ex11inp2+") ->\t"+allflatten.apply(ex11inp2)+"\t (expected <1, 2, 6, 7>)");
+        System.out.println("allflatten("+ex11inp3+") ->\t"+allflatten.apply(ex11inp3)+"\t (expected <>)");
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        //ex12
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
