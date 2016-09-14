@@ -5,10 +5,8 @@ import lecture2.Book;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
+import java.util.function.ObjDoubleConsumer;
+import java.util.stream.*;
 
 /**
  * Created by mpividori on 12/09/2016.
@@ -65,7 +63,36 @@ public class JDK8Exercise3 {
         Map<String, Double> ex1l = books.stream().collect(Collectors.groupingBy(Book::getAuthor, Collectors.averagingDouble(Book::getNumOfPages)));
         System.out.println("Ex 1l: average number of pages from each author ->\t" + ex1l);
 
+        //Exercise 2
+        IntStream powerOfTwoStream = IntStream.iterate(2, x -> x * 2);
+        System.out.println("\nEx 2: infinite stream for power of two");
+        powerOfTwoStream.limit(10).forEach(System.out::println);
+
+        //Exercise 3
+        try {
+            System.out.println("\nEx 3: first power of two greater than n");
+            for (int i = 1; i < 100000; i *= 10) {
+                System.out.println("powerOf2(" + i + ") -> \t" + powerOf2(i));
+            }
+        } catch (ValueNotFoundException e) {
+            System.out.println("Impossible");
+        }
+
+        //Exercise 4
+        Stream<Integer[]> ex4 = Stream.iterate(new Integer[] {0, 0}, (Integer[] x) -> new Integer[] {x[0]+1, x[1]+1});
+        System.out.println("\nEx 4: infinite stream for arrays of integers");
+        ex4.limit(10).forEach((Integer[] x) -> System.out.println("[" + x[0] + ", " + x[1] + "]"));
 
 
+
+
+
+    }
+
+    private static int powerOf2(int n) throws ValueNotFoundException {
+        IntStream s = IntStream.iterate(2, x -> x * 2);
+        OptionalInt power2 = s.filter(x -> x >= n).limit(1).findFirst();
+        if (power2.isPresent()) return power2.getAsInt();
+        else throw new ValueNotFoundException();
     }
 }
